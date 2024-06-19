@@ -1,7 +1,9 @@
 import 'package:caed_technical_challenge/common/utils/page_utils.dart';
 import 'package:caed_technical_challenge/preferences/app_paths.dart';
+import 'package:caed_technical_challenge/preferences/app_ui_texts.dart';
 import 'package:caed_technical_challenge/presentation/view/pages/home/home_page.dart';
 import 'package:caed_technical_challenge/presentation/view/view_model/bloc/login/login_bloc.dart';
+import 'package:caed_technical_challenge/presentation/view/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -65,22 +67,22 @@ class _LoginPageState extends State<LoginPage> {
                   physics: physics,
                   child: ConstrainedBox(
                     constraints: BoxConstraints(minHeight: 200),
-                    child: Stack(
+                    child: Column(
                       children: [
                         _buildHeaderImage(),
+                        _buildLogoImage(),
                         Container(
-                          height: pageHeight(context),
-                          padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              _buildLogoImage(),
-                              _buildInputFields(state),
-                            ],
+                            height: pageHeight(context),
+                            padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                _buildInputFields(state),
+                              ],
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -95,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Container _buildHeaderImage() {
     return Container(
-      height: 200,
+      height: 300,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(ImagesPath.caedBackground),
@@ -105,13 +107,9 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Center _buildLogoImage() {
-    return Center(
-      child: Image(
-        width: 161,
-        height: 39,
-        image: AssetImage(ImagesPath.caedLogo),
-      ),
+  Container _buildLogoImage() {
+    return Container(
+        child: Image(image: AssetImage(ImagesPath.caedLogo), width: 169, height: 31,),
     );
   }
 
@@ -122,23 +120,25 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          // CustomTextField(
-          //   placeholder: UITexts.loginFormUserPlaceholder.toUpperCase(),
-          //   textInputType: TextInputType.emailAddress,
-          //   controller: _emailController,
-          //   // autofillHints: [AutofillHints.email],
-          //   error: _emailError,
-          //   textInputAction: TextInputAction.next,
-          //   onChanged: (value) => this.setState(() => _emailError = null),
-          // ),
-          // Padding(padding: EdgeInsets.symmetric(vertical: 8)),
-          // CustomTextField(
-          //   obscureText: true,
-          //   placeholder: UITexts.loginFormPasswordLabel.toUpperCase(),
-          //   controller: _passwordController,
-          //   error: _passwordError,
-          //   onChanged: (value) => this.setState(() => _passwordError = null),
-          // ),
+          CustomTextField(
+            label: UITexts.loginFormUserLabel,
+            placeholder: UITexts.loginFormUserPlaceholder,
+            textInputType: TextInputType.emailAddress,
+            controller: _emailController,
+            // autofillHints: [AutofillHints.email],
+            error: _emailError,
+            textInputAction: TextInputAction.next,
+            onChanged: (value) => this.setState(() => _emailError = null),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+          CustomTextField(
+            label: UITexts.loginFormPasswordLabel,
+            obscureText: true,
+            placeholder: UITexts.loginFormPasswordPlaceholder,
+            controller: _passwordController,
+            error: _passwordError,
+            onChanged: (value) => this.setState(() => _passwordError = null),
+          ),
           // _buildLoginButton(state),
         ],
       ),
@@ -161,6 +161,7 @@ class _LoginPageState extends State<LoginPage> {
   //               email: _emailController.text,
   //               password: _passwordController.text,
   //             ));
+  
   //           },
   //         ),
   //         buttonProgressIndicator(state is LoginLoadingState),
