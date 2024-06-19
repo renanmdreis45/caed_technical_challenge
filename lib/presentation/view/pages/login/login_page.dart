@@ -1,8 +1,9 @@
-import 'package:caed_technical_challenge/common/utils/page_utils.dart';
+import 'package:caed_technical_challenge/preferences/app_constants.dart';
 import 'package:caed_technical_challenge/preferences/app_paths.dart';
 import 'package:caed_technical_challenge/preferences/app_ui_texts.dart';
 import 'package:caed_technical_challenge/presentation/view/pages/home/home_page.dart';
 import 'package:caed_technical_challenge/presentation/view/view_model/bloc/login/login_bloc.dart';
+import 'package:caed_technical_challenge/presentation/view/widgets/action_button.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     _bloc = LoginBloc();
   }
-  
+
   @override
   void dispose() {
     super.dispose();
@@ -50,6 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               _emailError = state.emailError;
               _passwordError = state.passwordError;
             }
+
             if (state.logged) {
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (_) => HomePage()), (_) => false);
@@ -59,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
         child: BlocBuilder<LoginBloc, UserLoginState>(
           bloc: _bloc,
           builder: (context, state) {
+            print(state);
             return SafeArea(
               child: Scaffold(
                 backgroundColor: Colors.white,
@@ -72,17 +75,18 @@ class _LoginPageState extends State<LoginPage> {
                         _buildHeaderImage(),
                         _buildLogoImage(),
                         Container(
-                            height: pageHeight(context),
-                            padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                _buildInputFields(state),
-                              ],
-                            ),
+                          height: MediaQuery.of(context).size.height - 330,
+                          margin: EdgeInsets.only(top: 50),
+                          padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              _buildInputFields(state),
+                            ],
                           ),
+                        ),
                       ],
                     ),
                   ),
@@ -109,13 +113,16 @@ class _LoginPageState extends State<LoginPage> {
 
   Container _buildLogoImage() {
     return Container(
-        child: Image(image: AssetImage(ImagesPath.caedLogo), width: 169, height: 31,),
+      child: Image(
+        image: AssetImage(ImagesPath.caedLogo),
+        width: 169,
+        height: 31,
+      ),
     );
   }
 
   Widget _buildInputFields(UserLoginState state) {
     return Container(
-      // constraints: contentBoxConstraints(),
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -139,34 +146,38 @@ class _LoginPageState extends State<LoginPage> {
             error: _passwordError,
             onChanged: (value) => this.setState(() => _passwordError = null),
           ),
-          // _buildLoginButton(state),
+          const SizedBox(
+            height: 30,
+          ),
+          _buildLoginButton(state),
         ],
       ),
     );
   }
 
-  // Widget _buildLoginButton(LoginState state) {
-  //   return Padding(
-  //     padding: const EdgeInsets.symmetric(vertical: 24),
-  //     child: Stack(
-  //       children: [
-  //         ActionButton(
-  //           title: UITexts.loginFormActionButton,
-  //           bgColor: Colors.white,
-  //           textColor: Colors.black,
-  //           action: () {
-  //             if (state is LoginLoadingState) return;
-  //             unfocusNode(context);
-  //             _bloc!.add(LoginEvent(
-  //               email: _emailController.text,
-  //               password: _passwordController.text,
-  //             ));
-  
-  //           },
-  //         ),
-  //         buttonProgressIndicator(state is LoginLoadingState),
-  //       ],
-  //     ),
-  //   );
-  // }
+  Widget _buildLoginButton(UserLoginState state) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24),
+      child: Stack(
+        children: [
+          ActionButton(
+            title: UITexts.loginFormActionButton,
+            bgColor: loginButtonBgColor,
+            textColor: Colors.black,
+            width: MediaQuery.of(context).size.width,
+            action: () {
+              print(_emailController.text);
+              print(_passwordController.text);
+              _bloc!.add(LoginEvent(
+                email: _emailController.text,
+                password: _passwordController.text,
+              ));
+                            Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (_) => HomePage()), (_) => false);
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }
