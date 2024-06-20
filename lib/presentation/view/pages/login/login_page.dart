@@ -61,33 +61,35 @@ class _LoginPageState extends State<LoginPage> {
         child: BlocBuilder<LoginBloc, UserLoginState>(
           bloc: _bloc,
           builder: (context, state) {
-            print(state);
             return SafeArea(
               child: Scaffold(
                 backgroundColor: Colors.white,
                 key: _loginGlobalKey,
-                body: SingleChildScrollView(
-                  physics: physics,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(minHeight: 200),
-                    child: Column(
-                      children: [
-                        _buildHeaderImage(),
-                        _buildLogoImage(),
-                        Container(
-                          height: MediaQuery.of(context).size.height - 330,
-                          margin: EdgeInsets.only(top: 50),
-                          padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              _buildInputFields(state),
-                            ],
+                body: Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: SingleChildScrollView(
+                    physics: physics,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: 200),
+                      child: Column(
+                        children: [
+                          _buildHeaderImage(),
+                          _buildLogoImage(),
+                          Container(
+                            height: MediaQuery.of(context).size.height - 330,
+                            margin: EdgeInsets.only(top: 50),
+                            padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                _buildInputFields(state),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

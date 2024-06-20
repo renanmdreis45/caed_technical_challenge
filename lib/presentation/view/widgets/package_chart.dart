@@ -194,7 +194,7 @@ class PackageChart extends StatelessWidget {
                 ),
                 Text(
                   '$quantidade pacotes',
-                  style: const TextStyle(color: labelGrayColor, fontSize: 14),
+                  style: const TextStyle(color: labelGrayPrimaryColor, fontSize: 14),
                 ),
               ],
             ),

@@ -13,4 +13,10 @@ class UITexts {
   static String get chartLabelMissingPackages => "Faltantes";
   static String get homePageTitle => "Listagem de Pacotes";
   static String get loginFormActionButton => "Entrar";
+  static String get tabLabelPackages => "Pacotes";
+  static String get tabLabelStatus => "Status";
+  static String get tabLabelDados => "Dados";
+  static String get headerLabelPackagesList => "Lista de pacotes";
+  static String get packageInfoUnavailable => "Indisponível";
+  static String get boxDataLabel => "Dados da caixa";
 }
