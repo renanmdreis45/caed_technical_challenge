@@ -1,4 +1,4 @@
-import 'package:caed_technical_challenge/preferences/app_ui_texts.dart';
+
 
 String? emailIsValid(String email) {
   final regex =
@@ -6,7 +6,7 @@ String? emailIsValid(String email) {
   final isValid = RegExp(regex).hasMatch(email);
 
   return email.isEmpty
-      ? UITexts.emptyInputError
+      ?  .emptyInputError
       : !isValid
           ? UITexts.emailInputError
           : null;

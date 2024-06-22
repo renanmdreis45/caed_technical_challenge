@@ -1,6 +1,6 @@
-import 'package:caed_technical_challenge/preferences/app_constants.dart';
-import 'package:caed_technical_challenge/preferences/app_paths.dart';
-import 'package:caed_technical_challenge/preferences/app_ui_texts.dart';
+import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
+import 'package:caed_technical_challenge/core/preferences/app_paths.dart';
+import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
 import 'package:caed_technical_challenge/presentation/view/pages/home/home_page.dart';
 import 'package:caed_technical_challenge/presentation/view/view_model/bloc/login/login_bloc.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/action_button.dart';

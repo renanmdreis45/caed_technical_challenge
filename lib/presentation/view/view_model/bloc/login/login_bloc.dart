@@ -1,4 +1,4 @@
-import 'package:caed_technical_challenge/common/utils/input_utils.dart';
+import 'package:caed_technical_challenge/core/common/utils/input_utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

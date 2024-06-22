@@ -1,4 +1,4 @@
-import 'package:caed_technical_challenge/preferences/app_constants.dart';
+import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {

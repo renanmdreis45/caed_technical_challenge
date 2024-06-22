@@ -1,6 +1,6 @@
 import 'package:caed_technical_challenge/domain/model/package.dart';
-import 'package:caed_technical_challenge/preferences/app_constants.dart';
-import 'package:caed_technical_challenge/preferences/app_ui_texts.dart';
+import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
+import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/packages_data.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/packages_list.dart';
 import 'package:flutter/material.dart';

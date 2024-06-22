@@ -1,6 +1,6 @@
-import 'package:caed_technical_challenge/common/utils/chart_utils.dart';
-import 'package:caed_technical_challenge/preferences/app_constants.dart';
-import 'package:caed_technical_challenge/preferences/app_ui_texts.dart';
+import 'package:caed_technical_challenge/core/common/utils/chart_utils.dart';
+import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
+import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
 import 'package:flutter/material.dart';
 
 class PackageChart extends StatelessWidget {
@@ -48,7 +48,7 @@ class PackageChart extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   child: Text(UITexts.chartTitleReceivedPackages),
                 ),
-                const Row(children: [
+                Row(children: [
                   Expanded(
                     child: SizedBox(
                       width: double.maxFinite,
@@ -109,7 +109,7 @@ class PackageChart extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   child: Text(UITexts.chartTitleReturnedPackages),
                 ),
-                const Row(children: [
+                Row(children: [
                   SizedBox(
                     width: 182,
                     height: 40,
