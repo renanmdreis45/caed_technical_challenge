@@ -10,11 +10,6 @@ class PackageModel {
   String receivedDate;
   bool isReturned;
   String returnedDate;
-  String pontoEntrega;
-  String municipio;
-  String escola;
-  String etapa;
-  String componente;
 
   PackageModel({
     required this.id,
@@ -22,11 +17,6 @@ class PackageModel {
     required this.receivedDate,
     required this.isReturned,
     required this.returnedDate,
-    required this.pontoEntrega,
-    required this.municipio,
-    required this.escola,
-    required this.etapa,
-    required this.componente,
   });
 
   String toRawJson() => json.encode(toJson());
@@ -37,11 +27,6 @@ class PackageModel {
         receivedDate: json["receivedDate"] ?? "",
         isReturned: json["isReturned"] ?? false,
         returnedDate: json["returnedDate"] ?? "",
-        pontoEntrega: json["pontoEntrega"] ?? "",
-        municipio: json["municipio"] ?? "",
-        escola: json["escola"] ?? "",
-        etapa: json["etapa"] ?? "",
-        componente: json["componente"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,10 +35,5 @@ class PackageModel {
         "receivedDate": receivedDate,
         "isReturned": isReturned,
         "returnedDate": returnedDate,
-        "pontoEntrega": pontoEntrega,
-        "municipio": municipio,
-        "escola": escola,
-        "etapa": etapa,
-        "componente": componente,
       };
 }

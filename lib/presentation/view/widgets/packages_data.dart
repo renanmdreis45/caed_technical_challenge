@@ -1,5 +1,5 @@
 import 'package:caed_technical_challenge/core/common/utils/package_utils.dart';
-import 'package:caed_technical_challenge/domain/model/package.dart';
+import 'package:caed_technical_challenge/domain/models/box.dart';
 import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
 import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class PackagesData extends StatelessWidget {
     required this.package,
   }) : super(key: key);
 
-  final PackageModel package;
+  final BoxModel package;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ Widget _buildHeader() {
   );
 }
 
-Widget _buildPackageData(PackageModel package, int index) {
+Widget _buildPackageData(BoxModel box, int index) {
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
     child: Column(children: [
@@ -62,48 +62,48 @@ Widget _buildPackageData(PackageModel package, int index) {
           const SizedBox(
             width: 5,
           ),
-          _buildPackageInfo(package, index),
+          _buildPackageInfo(box, index),
         ],
       )
     ]),
   );
 }
 
-Widget _buildPackageInfo(PackageModel package, int index) {
+Widget _buildPackageInfo(BoxModel box, int index) {
   switch (index) {
     case 0:
       return Text(
-        package.id.toUpperCase(),
+        box.codigo.toUpperCase(),
         style: defaultTextStyle(),
       );
 
     case 1:
       return Text(
-        package.pontoEntrega.toUpperCase(),
+        box.pontoEntrega.toUpperCase(),
         style: defaultTextStyle(),
       );
 
     case 2:
       return Text(
-        package.municipio.toUpperCase(),
+        box.municipio.toUpperCase(),
         style: defaultTextStyle(),
       );
 
     case 3:
       return Text(
-        package.escola.toUpperCase(),
+        box.escola.toUpperCase(),
         style: defaultTextStyle(),
       );
 
     case 4:
       return Text(
-        package.etapa.toUpperCase(),
+        box.etapa.toUpperCase(),
         style: defaultTextStyle(),
       );
 
     case 5:
       return Text(
-        package.componente.toUpperCase(),
+        box.componente.toUpperCase(),
         style: defaultTextStyle(),
       );
 

@@ -15,4 +15,4 @@ const Color labelGraySecondaryColor = Color(0xFF6F797A);
 const Color idPackageLabel = Color(0xFF191C1D);
 
 // //API
-const packagesApiBaseUrl = 'https://packages.free.beeceptor.com/';
+const packagesApiBaseUrl = 'https://packages.free.beeceptor.com';
