@@ -13,6 +13,6 @@ const Color defaultHeaderColor = Color(0xFF323232);
 const Color labelGraySecondaryColor = Color(0xFF6F797A);
 const Color idPackageLabel = Color(0xFF191C1D);
 const Color lightGreenReceivedBoxStatus = Color(0xFFA6F5CA);
-const Color darkGreenReturnedBoxStatus = Color(0xFFAEF3FE);
+const Color darkGreenReturnedBoxStatus = Color(0xFF0CB560);
 // //API
 const packagesApiBaseUrl = 'https://packages.free.beeceptor.com';
