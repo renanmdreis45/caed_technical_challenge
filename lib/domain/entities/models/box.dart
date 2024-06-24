@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:caed_technical_challenge/domain/entities/package.dart';
+import 'package:caed_technical_challenge/domain/entities/models/package.dart';
 
 BoxModel boxModelFromJson(String str) => BoxModel.fromJson(json.decode(str));
 
