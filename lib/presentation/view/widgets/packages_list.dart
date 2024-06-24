@@ -1,6 +1,8 @@
 import 'package:caed_technical_challenge/domain/models/box.dart';
 import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
 import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
+import 'package:caed_technical_challenge/domain/models/package.dart';
+import 'package:caed_technical_challenge/presentation/view/pages/details/details_page.dart';
 import 'package:flutter/material.dart';
 
 class PackagesList extends StatelessWidget {
@@ -23,7 +25,7 @@ class PackagesList extends StatelessWidget {
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
-              return _buildPackage(packages[index]);
+              return _buildPackage(packages[index], context);
             },
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(),
@@ -59,7 +61,7 @@ Widget _buildHeader() {
   );
 }
 
-Widget _buildPackage(PackageModel package) {
+Widget _buildPackage(PackageModel package, BuildContext context) {
   return Container(
     padding: const EdgeInsets.all(5.0),
     child: Row(
@@ -68,7 +70,7 @@ Widget _buildPackage(PackageModel package) {
         Column(
           children: [
             Text(
-              package.id,
+              package.id.toUpperCase(),
               style: const TextStyle(fontSize: 12, color: idPackageLabel),
             ),
             const SizedBox(
@@ -106,7 +108,13 @@ Widget _buildPackage(PackageModel package) {
           ],
         ),
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailsPage(package: package)),
+              );
+            },
             icon: const Icon(
               Icons.arrow_forward_ios,
               size: 15,

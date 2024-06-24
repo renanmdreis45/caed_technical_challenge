@@ -4,13 +4,13 @@ import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
 import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
 import 'package:flutter/material.dart';
 
-class PackagesData extends StatelessWidget {
-  const PackagesData({
+class BoxData extends StatelessWidget {
+  const BoxData({
     Key? key,
-    required this.package,
+    required this.box,
   }) : super(key: key);
 
-  final BoxModel package;
+  final BoxModel box;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,12 @@ class PackagesData extends StatelessWidget {
         _buildHeader(),
         Expanded(
           child: ListView.separated(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: 6,
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
-              return _buildPackageData(package, index);
+              return _buildPackageData(box, index);
             },
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(),

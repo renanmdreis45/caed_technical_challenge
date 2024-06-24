@@ -4,6 +4,7 @@ import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
 import 'package:caed_technical_challenge/presentation/view/pages/home/home_page.dart';
 import 'package:caed_technical_challenge/presentation/view/view_model/bloc/login/login_bloc.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/action_button.dart';
+import 'package:caed_technical_challenge/presentation/view/widgets/all_packages.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
 
             if (state.logged) {
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (_) => HomePage()), (_) => false);
+                  MaterialPageRoute(builder: (_) => const AllPackages()), (_) => false);
             }
           }
         },
@@ -175,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                 password: _passwordController.text,
               ));
                             Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (_) => HomePage()), (_) => false);
+                  MaterialPageRoute(builder: (_) => const AllPackages()), (_) => false);
             },
           ),
         ],

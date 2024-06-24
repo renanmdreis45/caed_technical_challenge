@@ -1,6 +1,4 @@
-import 'package:caed_technical_challenge/domain/model/package.dart';
-
- List<String> packagesLabel = [
+List<String> packagesLabel = [
   "CÓDIGO",
   "PONTO DE ENTREGA",
   "MUNICÍPIO",
@@ -8,6 +6,14 @@ import 'package:caed_technical_challenge/domain/model/package.dart';
   "ANO ESCOLAR/ETAPA",
   "COMPONENTE CURRICULAR"
 ];
+
+int calculaPorcentagem(int numerador, int denominador) {
+  final porc = (numerador / denominador)*100;
+  
+  int result = porc.floor();
+  print(result);
+  return result;
+}
 
 // List<PackageModel> packages = [
 //   PackageModel(id: '1', isReceived: true, receivedDate: '18/06/2024 14:32', isReturned: true, returnedDate: '20/06/2024 09:00', pontoEntrega: "1ª REGIAO", municipio: "ARACAJU/SE", escola: "EMEF DEPUTADO JAIME ARAUJO (28031121)", etapa: "2º ANO EF (ENSINO FUNDAMENTAL)", componente: "LÍNGUA PORTUGUESA"),

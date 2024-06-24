@@ -19,4 +19,20 @@ class UITexts {
   static String get headerLabelPackagesList => "Lista de pacotes";
   static String get packageInfoUnavailable => "Indisponível";
   static String get boxDataLabel => "Dados da caixa";
+  static String get packageLabelDetailsTitle => "Pacote";
+  static String get packageLabelStatus => "Status do pacote";
+  static String get labelPackageReceivedConfirmation =>
+      "Coordenador registrou recebimento deste pacote";
+  static String get labelPackageReturnedConfirmation =>
+      "Coordenador registrou devolução deste pacote";
+  static String get labelPackageNotReceivedConfirmation =>
+      "Esse pacote não foi recebido";
+  static String get labelBoxReceiveConfirmation =>
+      "Coordenador recebeu a caixa da transportadora";
+  static String get labelBoxOpenConfirmation =>
+      "Coordenador abriu a caixa para a leitura dos pacotes";
+  static String get labelBoxReadConfirmation =>
+      "Coordenador leu todos os pacotes desta caixa";
+  static String get labelBoxReturnConfirmation =>
+      "Coordenador devolveu a caixa à transportadora";
 }

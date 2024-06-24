@@ -1,8 +1,14 @@
+import 'package:caed_technical_challenge/core/di/injection_container.dart';
 import 'package:caed_technical_challenge/presentation/view/pages/login/login_page.dart';
+import 'package:caed_technical_challenge/presentation/view/view_model/bloc/box/box_bloc.dart';
+import 'package:caed_technical_challenge/presentation/view/view_model/bloc/box/box_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await initializeDependencies();
+    runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,21 +17,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Caed Technical Challenge',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return BlocProvider<BoxBloc>(
+      create: (context) => sl()..add(const GetBox()),
+      child: MaterialApp(
+        title: 'Caed Technical Challenge',
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        home: const LoginPage(),
       ),
-      home: const LoginPage(),
     );
   }
 }

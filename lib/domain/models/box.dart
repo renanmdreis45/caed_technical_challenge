@@ -18,10 +18,10 @@ class BoxModel {
   int faltantesRecebimento;
   int devolvidos;
   int faltantesDevolucao;
-  String dateReceived;
-  String dateOpen;
-  String dateRead;
-  String dateReturned;
+  DateTime dateReceived;
+  DateTime dateOpen;
+  DateTime dateRead;
+  DateTime dateReturned;
   List<PackageModel> packages;
 
   BoxModel({
@@ -43,6 +43,43 @@ class BoxModel {
     required this.packages,
   });
 
+  BoxModel copyWith({
+    String? id,
+    String? codigo,
+    String? pontoEntrega,
+    String? municipio,
+    String? escola,
+    String? etapa,
+    String? componente,
+    int? recebidos,
+    int? faltantesRecebimento,
+    int? devolvidos,
+    int? faltantesDevolucao,
+    DateTime? dateReceived,
+    DateTime? dateOpen,
+    DateTime? dateRead,
+    DateTime? dateReturned,
+    List<PackageModel>? packages,
+  }) =>
+      BoxModel(
+        id: id ?? this.id,
+        codigo: codigo ?? this.codigo,
+        pontoEntrega: pontoEntrega ?? this.pontoEntrega,
+        municipio: municipio ?? this.municipio,
+        escola: escola ?? this.escola,
+        etapa: etapa ?? this.etapa,
+        componente: componente ?? this.componente,
+        recebidos: recebidos ?? this.recebidos,
+        faltantesRecebimento: faltantesRecebimento ?? this.faltantesRecebimento,
+        devolvidos: devolvidos ?? this.devolvidos,
+        faltantesDevolucao: faltantesDevolucao ?? this.faltantesDevolucao,
+        dateReceived: dateReceived ?? this.dateReceived,
+        dateOpen: dateOpen ?? this.dateOpen,
+        dateRead: dateRead ?? this.dateRead,
+        dateReturned: dateReturned ?? this.dateReturned,
+        packages: packages ?? this.packages,
+      );
+
   String toRawJson() => json.encode(toJson());
 
   factory BoxModel.fromJson(Map<String, dynamic> json) => BoxModel(
@@ -57,11 +94,12 @@ class BoxModel {
         faltantesRecebimento: json["faltantesRecebimento"] ?? 0,
         devolvidos: json["devolvidos"] ?? 0,
         faltantesDevolucao: json["faltantesDevolucao"] ?? 0,
-        dateReceived: json["dateReceived"] ?? "",
-        dateOpen: json["dateOpen"] ?? "",
-        dateRead: json["dateRead"] ?? "",
-        dateReturned: json["dateReturned"] ?? "",
-        packages: json["packages"] ?? "",
+        dateReceived: DateTime.parse(json["dateReceived"]),
+        dateOpen: DateTime.parse(json["dateOpen"]),
+        dateRead: DateTime.parse(json["dateRead"]),
+        dateReturned: DateTime.parse(json["dateReturned"]),
+        packages: List<PackageModel>.from(
+            json["packages"].map((x) => PackageModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -76,10 +114,10 @@ class BoxModel {
         "faltantesRecebimento": faltantesRecebimento,
         "devolvidos": devolvidos,
         "faltantesDevolucao": faltantesDevolucao,
-        "dateReceived": dateReceived,
-        "dateOpen": dateOpen,
-        "dateRead": dateRead,
-        "dateReturned": dateReturned,
+        "dateReceived": dateReceived.toIso8601String(),
+        "dateOpen": dateOpen.toIso8601String(),
+        "dateRead": dateRead.toIso8601String(),
+        "dateReturned": dateReturned.toIso8601String(),
         "packages": packages
       };
 }

@@ -40,7 +40,7 @@ class PackageChart extends StatelessWidget {
               width: (MediaQuery.of(context).size.width * 3) / 4,
               decoration: const BoxDecoration(
                 color: chartBgColor,
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               child: Column(children: [
                 Container(
@@ -50,13 +50,13 @@ class PackageChart extends StatelessWidget {
                 ),
                 Row(children: [
                   Expanded(
+                    flex: quantRecebidos,
                     child: SizedBox(
-                      width: double.maxFinite,
                       height: 40,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           color: receivedPackagesColor,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                         ),
                       ),
                     ),
@@ -65,12 +65,13 @@ class PackageChart extends StatelessWidget {
                     width: 5,
                   ),
                   Expanded(
+                    flex: quantRecebidosFaltantes,
                     child: SizedBox(
                       height: 40,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           color: missingPackagesColor,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                         ),
                       ),
                     ),
@@ -110,26 +111,30 @@ class PackageChart extends StatelessWidget {
                   child: Text(UITexts.chartTitleReturnedPackages),
                 ),
                 Row(children: [
-                  SizedBox(
-                    width: 182,
-                    height: 40,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: returnedPackagesColor,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                  Expanded(
+                    flex: quantDevolvidos,
+                    child: const SizedBox(
+                      height: 40,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: returnedPackagesColor,
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
-                  SizedBox(
-                    width: 58,
-                    height: 40,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: missingPackagesColor,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                  Expanded(
+                    flex: quantDevolvidosFaltantes,
+                    child: const SizedBox(
+                      height: 40,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: missingPackagesColor,
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
                       ),
                     ),
                   ),
@@ -173,24 +178,29 @@ class PackageChart extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(2),
-          child: Row(children: [
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
             SizedBox(
               height: 10,
               width: 10,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                     color: legendColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(5))),
+                    borderRadius: const BorderRadius.all(Radius.circular(1))),
               ),
             ),
+            SizedBox(width: 5,),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 5,),
                 Text(
                   type,
                   style: const TextStyle(color: Colors.black, fontSize: 14),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 1,
                 ),
                 Text(
                   '$quantidade pacotes',
@@ -204,7 +214,7 @@ class PackageChart extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           child: Text(
             '$percent%',
-            style: const TextStyle(color: percentPackagesColor, fontSize: 16),
+            style: const TextStyle(color: percentPackagesColor, fontSize: 16, fontWeight: FontWeight.bold),
           ),
         )
       ],

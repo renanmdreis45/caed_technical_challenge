@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-
 //Colors
 const Color inputBgColor = Color(0xFFF0F0F0);
 const Color chartBgColor = Color(0xFFF1F1F1);
@@ -13,6 +12,7 @@ const Color percentPackagesColor = Color(0xFF969696);
 const Color defaultHeaderColor = Color(0xFF323232);
 const Color labelGraySecondaryColor = Color(0xFF6F797A);
 const Color idPackageLabel = Color(0xFF191C1D);
-
+const Color lightGreenReceivedBoxStatus = Color(0xFFA6F5CA);
+const Color darkGreenReturnedBoxStatus = Color(0xFFAEF3FE);
 // //API
 const packagesApiBaseUrl = 'https://packages.free.beeceptor.com';
