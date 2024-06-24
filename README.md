@@ -1,6 +1,6 @@
 # Caed Technical Challenge
 
-Repositório referente ao desafio de mobile da CAED. O desafio pode ser encontrado aqui: https://github.com/fleye-me/fleye-flix#readme
+Repositório referente ao desafio de mobile da CAED.
 
   Foram escolhidas as tecnologias Flutter e Dart.
 
