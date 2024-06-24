@@ -1,6 +1,6 @@
 import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
-import 'package:caed_technical_challenge/domain/models/box.dart';
-import 'package:caed_technical_challenge/domain/models/package.dart';
+import 'package:caed_technical_challenge/domain/entities/box.dart';
+import 'package:caed_technical_challenge/domain/entities/models/package.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

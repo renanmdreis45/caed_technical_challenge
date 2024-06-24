@@ -25,7 +25,7 @@ class ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: _getWidth(),
+      width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: ButtonTheme(
         height: this.size == null ? 55 : this.size!.height,
@@ -47,14 +47,7 @@ class ActionButton extends StatelessWidget {
       backgroundColor: this.bgColor,
       padding: this.padding ?? EdgeInsets.all(16),
       minimumSize: this.size ?? Size(55, 55),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
     );
-  }
-
-  double? _getWidth() {
-    if (wrapContent != null) return null;
-
-    if (width != null) return width;
-
-    return double.infinity;
   }
 }

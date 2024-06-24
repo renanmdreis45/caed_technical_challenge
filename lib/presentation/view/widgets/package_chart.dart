@@ -31,16 +31,16 @@ class PackageChart extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Container(
         padding: EdgeInsets.all(5.0),
-        height: 300,
+        height: MediaQuery.of(context).size.height - 520,
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(20.0),
               margin: const EdgeInsets.only(right: 10),
               width: (MediaQuery.of(context).size.width * 3) / 4,
               decoration: const BoxDecoration(
                 color: chartBgColor,
-                borderRadius: BorderRadius.all(Radius.circular(5)),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               child: Column(children: [
                 Container(

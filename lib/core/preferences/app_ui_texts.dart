@@ -21,6 +21,7 @@ class UITexts {
   static String get boxDataLabel => "Dados da caixa";
   static String get packageLabelDetailsTitle => "Pacote";
   static String get packageLabelStatus => "Status do pacote";
+  static String get boxLabelStatus => "Status da caixa";
   static String get labelPackageReceivedConfirmation =>
       "Coordenador registrou recebimento deste pacote";
   static String get labelPackageReturnedConfirmation =>

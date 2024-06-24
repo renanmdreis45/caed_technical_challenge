@@ -1,7 +1,7 @@
 import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
 import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
-import 'package:caed_technical_challenge/domain/models/box.dart';
-import 'package:caed_technical_challenge/domain/models/package.dart';
+import 'package:caed_technical_challenge/domain/entities/box.dart';
+import 'package:caed_technical_challenge/domain/entities/models/package.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/box_data.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/box_status.dart';
 import 'package:caed_technical_challenge/presentation/view/widgets/packages_list.dart';

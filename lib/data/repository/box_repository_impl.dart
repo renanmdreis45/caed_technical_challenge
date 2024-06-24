@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:caed_technical_challenge/core/resources/data_state.dart';
 import 'package:caed_technical_challenge/data/sources/remote/box_service.dart';
-import 'package:caed_technical_challenge/domain/models/box.dart';
+import 'package:caed_technical_challenge/domain/entities/box.dart';
 import 'package:caed_technical_challenge/domain/repository/box_repository.dart';
 import 'package:dio/dio.dart';
 

@@ -1,4 +1,4 @@
-import 'package:caed_technical_challenge/domain/models/box.dart';
+import 'package:caed_technical_challenge/domain/entities/box.dart';
 import 'package:equatable/equatable.dart';
 import 'package:dio/dio.dart';
 
