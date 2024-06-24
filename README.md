@@ -67,6 +67,9 @@ Utilizei um emulador do Android Studio para buildar e exibir a aplicação
 
 
 
+https://github.com/renanmdreis45/caed_technical_challenge/assets/85807389/5964a057-2076-411b-8220-ff0aa854f942
+
+
 
 
 # Melhorias futuras
