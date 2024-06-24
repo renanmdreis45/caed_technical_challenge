@@ -3,6 +3,7 @@ import 'package:caed_technical_challenge/domain/usecase/get_box.dart';
 import 'package:caed_technical_challenge/presentation/view/view_model/bloc/box/box_event.dart';
 import 'package:caed_technical_challenge/presentation/view/view_model/bloc/box/box_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 
 class BoxBloc extends Bloc<BoxEvent, BoxState> {
   final GetAllPackages _getAllPackages;

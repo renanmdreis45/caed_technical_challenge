@@ -1,3 +1,4 @@
+import 'package:bloc/bloc.dart';
 import 'package:caed_technical_challenge/core/common/utils/input_utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,8 @@ class LoginBloc extends Bloc<UserLoginEvent, UserLoginState> {
 
   LoginBloc() : super(LoginInitial()) {
     on<LoginEvent>((event, emit) async {
+      emit(LoginLoadingState());
+
       final error = _validateFields(event);
 
       if (error[hasError]) {
@@ -34,14 +37,14 @@ class LoginBloc extends Bloc<UserLoginEvent, UserLoginState> {
     map[hasError] = true;
 
     final emailValidate = emailIsValid(event.email!);
-
+    
     if (emailValidate != null) {
       map[emailError] = emailValidate;
       return map;
     }
 
     final pwdValidate = passwordIsValid(event.password);
-
+    
     if (pwdValidate != null) {
       map[passwordError] = pwdValidate;
       return map;

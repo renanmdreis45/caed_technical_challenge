@@ -28,6 +28,10 @@ class LoginState extends UserLoginState {
   List<Object> get props => [];
 }
 
+class LoginLoadingState extends UserLoginState {
+  @override
+  List<Object> get props => [];
+}
 class LoginErrorState extends UserLoginState {
   @override
   List<Object> get props => [];

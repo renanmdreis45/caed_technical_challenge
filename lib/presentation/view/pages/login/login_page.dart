@@ -1,3 +1,4 @@
+import 'package:caed_technical_challenge/core/common/utils/input_utils.dart';
 import 'package:caed_technical_challenge/core/preferences/app_constants.dart';
 import 'package:caed_technical_challenge/core/preferences/app_paths.dart';
 import 'package:caed_technical_challenge/core/preferences/app_ui_texts.dart';
@@ -42,62 +43,62 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc(),
-      child: BlocListener<LoginBloc, UserLoginState>(
-        bloc: _bloc,
-        listener: (context, state) {
-          if (state is LoginState) {
-            if (state.hasError) {
-              _emailError = state.emailError;
-              _passwordError = state.passwordError;
-            }
-
-            if (state.logged) {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (_) => const AllPackages()), (_) => false);
-            }
+    return BlocListener<LoginBloc, UserLoginState>(
+      bloc: _bloc,
+      listener: (context, state) {
+        print(state);
+        if (state is LoginState) {
+          if (state.hasError) {
+            _emailError = state.emailError;
+            _passwordError = state.passwordError;
           }
-        },
-        child: BlocBuilder<LoginBloc, UserLoginState>(
-          bloc: _bloc,
-          builder: (context, state) {
-            return SafeArea(
-              child: Scaffold(
-                backgroundColor: Colors.white,
-                key: _loginGlobalKey,
-                body: Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: SingleChildScrollView(
-                    physics: physics,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(minHeight: 200),
-                      child: Column(
-                        children: [
-                          _buildHeaderImage(),
-                          _buildLogoImage(),
-                          Container(
-                            height: MediaQuery.of(context).size.height - 330,
-                            margin: EdgeInsets.only(top: 50),
-                            padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                _buildInputFields(state),
-                              ],
-                            ),
+
+          if (state.logged) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AllPackages()),
+            );
+          }
+        }
+      },
+      child: BlocBuilder<LoginBloc, UserLoginState>(
+        bloc: _bloc,
+        builder: (context, state) {
+          return SafeArea(
+            child: Scaffold(
+              backgroundColor: Colors.white,
+              key: _loginGlobalKey,
+              body: Container(
+                height: MediaQuery.of(context).size.height,
+                child: SingleChildScrollView(
+                  physics: physics,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: 200),
+                    child: Column(
+                      children: [
+                        _buildHeaderImage(),
+                        _buildLogoImage(),
+                        Container(
+                          height: MediaQuery.of(context).size.height - 330,
+                          margin: EdgeInsets.only(top: 50),
+                          padding: EdgeInsets.only(bottom: kToolbarHeight * .5),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              _buildInputFields(state),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -169,14 +170,12 @@ class _LoginPageState extends State<LoginPage> {
             textColor: Colors.black,
             width: MediaQuery.of(context).size.width,
             action: () {
-              print(_emailController.text);
-              print(_passwordController.text);
+              if (state is LoginLoadingState) return;
+              unfocusNode(context);
               _bloc!.add(LoginEvent(
                 email: _emailController.text,
                 password: _passwordController.text,
               ));
-                            Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (_) => const AllPackages()), (_) => false);
             },
           ),
         ],
