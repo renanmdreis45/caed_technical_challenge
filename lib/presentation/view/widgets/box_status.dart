@@ -18,39 +18,45 @@ class BoxStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const NeverScrollableScrollPhysics(),
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8, left: 20, bottom: 8, right: 8),
-              child: Text(
-                UITexts.packageLabelStatus,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height - 500,
+      child: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: Container(
+          height: MediaQuery.of(context).size.height - 200,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
               ),
-            ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 20, bottom: 8, right: 8),
+                  child: Text(
+                    UITexts.packageLabelStatus,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+              Center(
+                  child: Container(
+                margin: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
+                height: MediaQuery.of(context).size.height - 340,
+                decoration: const BoxDecoration(
+                    color: inputBgColor,
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Center(
+                  child: _buildBoxStatus(box),
+                ),
+              ))
+            ],
           ),
-          Center(
-              child: Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(20),
-            height: MediaQuery.of(context).size.height - 340,
-            decoration: const BoxDecoration(
-                color: inputBgColor,
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: Center(
-              child: _buildBoxStatus(box),
-            ),
-          ))
-        ],
+        ),
       ),
     );
   }

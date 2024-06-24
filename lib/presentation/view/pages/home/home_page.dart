@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 
   final BoxModel? box;
 
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -22,11 +21,17 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   ScrollPhysics? physics;
   TabController? _tabController;
+  int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _tabController?.addListener(() {
+      setState(() {
+        _currentIndex = _tabController!.index;
+      });
+    });
   }
 
   @override
@@ -47,18 +52,30 @@ class _HomePageState extends State<HomePage>
             children: [
               PackageChart(
                 quantRecebidos: widget.box!.recebidos,
-                porcentagemRecebidos: calculaPorcentagem(widget.box!.recebidos, (widget.box!.recebidos + widget.box!.faltantesRecebimento)),
+                porcentagemRecebidos: calculaPorcentagem(widget.box!.recebidos,
+                    (widget.box!.recebidos + widget.box!.faltantesRecebimento)),
                 quantRecebidosFaltantes: widget.box!.faltantesRecebimento,
-                porcentagemRecebidosFaltantes: calculaPorcentagem(widget.box!.faltantesRecebimento, (widget.box!.faltantesRecebimento + widget.box!.recebidos)),
+                porcentagemRecebidosFaltantes: calculaPorcentagem(
+                    widget.box!.faltantesRecebimento,
+                    (widget.box!.faltantesRecebimento + widget.box!.recebidos)),
                 quantDevolvidos: widget.box!.devolvidos,
-                porcentagemDevolvidos: calculaPorcentagem(widget.box!.devolvidos, (widget.box!.devolvidos + widget.box!.faltantesDevolucao)),
+                porcentagemDevolvidos: calculaPorcentagem(
+                    widget.box!.devolvidos,
+                    (widget.box!.devolvidos + widget.box!.faltantesDevolucao)),
                 quantDevolvidosFaltantes: widget.box!.faltantesDevolucao,
-                porcentagemDevolvidosFaltantes: calculaPorcentagem(widget.box!.faltantesDevolucao, (widget.box!.faltantesDevolucao + widget.box!.devolvidos)),
+                porcentagemDevolvidosFaltantes: calculaPorcentagem(
+                    widget.box!.faltantesDevolucao,
+                    (widget.box!.faltantesDevolucao + widget.box!.devolvidos)),
               ),
               const SizedBox(
                 height: 20,
               ),
-              TabsList(tabController: _tabController, box: widget.box!,)
+              Expanded(
+                  child: TabsList(
+                tabController: _tabController,
+                box: widget.box!,
+                currentIndex: _currentIndex,
+              ))
             ],
           ),
         ),
@@ -87,5 +104,3 @@ class _HomePageState extends State<HomePage>
     );
   }
 }
-
-

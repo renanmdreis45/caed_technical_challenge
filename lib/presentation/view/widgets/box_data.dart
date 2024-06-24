@@ -14,11 +14,12 @@ class BoxData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _buildHeader(),
-        Expanded(
-          child: ListView.separated(
+    return SizedBox(
+      height: 300,
+      child: Column(
+        children: [
+          _buildHeader(),
+          ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             itemCount: 6,
             scrollDirection: Axis.vertical,
@@ -29,8 +30,8 @@ class BoxData extends StatelessWidget {
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

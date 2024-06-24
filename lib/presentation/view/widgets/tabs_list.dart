@@ -8,20 +8,23 @@ import 'package:caed_technical_challenge/presentation/view/widgets/packages_list
 import 'package:flutter/material.dart';
 
 class TabsList extends StatelessWidget {
-  const TabsList({
-    Key? key,
-    required this.tabController,
-    required this.box,
-  }) : super(key: key);
+  const TabsList(
+      {Key? key,
+      required this.tabController,
+      required this.box,
+      required this.currentIndex})
+      : super(key: key);
 
   final TabController? tabController;
   final BoxModel box;
+  final int currentIndex;
 
   @override
   Widget build(BuildContext context) {
+    print(currentIndex);
     return SafeArea(
       child: Container(
-        height: MediaQuery.of(context).size.height - 500,
+        width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           physics: ScrollPhysics(),
           scrollDirection: Axis.vertical,
@@ -53,9 +56,10 @@ class TabsList extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height,
+                height: currentIndex == 0 ? MediaQuery.of(context).size.height +
+                    (15 * box.packages.length) : currentIndex == 1 ? MediaQuery.of(context).size.height - 50 : MediaQuery.of(context).size.height - 300,
                 child: TabBarView(controller: tabController, children: [
-                  PackagesList(packages: box.packages),
+                  Expanded(child: PackagesList(packages: box.packages)),
                   BoxStatus(box: box),
                   BoxData(box: box),
                 ]),
